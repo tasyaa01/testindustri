@@ -10,8 +10,8 @@ class GuruController extends Controller
 {
     public function index()
     {
-        $guru = Guru::all();
-        return view('guru.index', compact('guru'));
+        $guru = Guru::with('murid')->get();
+        return view('guru.index', ['guru' => $guru]);
     }
 
     public function create()
@@ -73,7 +73,10 @@ class GuruController extends Controller
 
     public function destroy($id)
     {
-        $guru = guru::find($id);
+        $guru = Guru::findOrFail($id);
+        $guru->delete();
+        return redirect()->route('guru.index')
+            ->with('success', 'Data berhasil dihapus!');
     }
 }
 

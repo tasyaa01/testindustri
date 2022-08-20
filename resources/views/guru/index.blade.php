@@ -33,7 +33,7 @@
                                             <td>{{ $data->nip }}</td>
                                             <td>{{ $data->nama }}</td>
                                             <td>{{ $data->mapel }}</td>
-                                            <td>{{ $data->murid->nama }}</td>
+                                            <td>{{ $data->murid->nama}}</td>
                                             <td>
                                                 <form action="{{ route('guru.destroy', $data->id) }}" method="post">
                                                     @csrf

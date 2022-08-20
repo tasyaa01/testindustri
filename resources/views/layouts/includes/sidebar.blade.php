@@ -15,7 +15,7 @@
                      alt="User Image">
              </div>
              <div class="info">
-                 <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                 <a href="#" class="d-block"> {{Auth::user()->name ?? ' '}}</a>
              </div>
          </div>
 
@@ -26,6 +26,15 @@
              <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                  data-accordion="false">
                  <li class="nav-item">
+                 <a href="{{ route('murid.index') }}"
+                     class="nav-link {{ Request::is('admin/murid*') ? 'active' : '' }}">
+                     <i class="nav-icon fas fa-copy"></i>
+                     <p>
+                         Murid
+                     </p>
+                 </a>
+                 </li>
+                 <li class="nav-item">
                      <a href="{{ route('guru.index') }}"
                          class="nav-link {{ Request::is('admin/guru*') ? 'active' : '' }}">
                          <i class="nav-icon fas fa-copy"></i>
@@ -34,15 +43,6 @@
                          </p>
                      </a>
                  </li>
-                 <li class="nav-item">
-                 <a href="{{ route('murid.index') }}"
-                     class="nav-link {{ Request::is('admin/murid*') ? 'active' : '' }}">
-                     <i class="nav-icon fas fa-copy"></i>
-                     <p>
-                         Murid
-                     </p>
-                 </a>
-             </li>
              </ul>
          </nav>
          <!-- /.sidebar-menu -->

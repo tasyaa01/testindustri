@@ -7,12 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class murid extends Model
 {
+    public $fillable = [ 'nis', 'nama', 'kelas', 'jurusan'];
     use HasFactory;
-
-    public function guru()
-    {
-        // data dari model 'siswa' bisa memiliki banyak data
-        // dari model 'Siswa' melalui id_murid
-        return $this->hasMany(Siswa::class, 'id_murid');
-    }
 }

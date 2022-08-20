@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMuridsTable extends Migration
+class CreateGurusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateMuridsTable extends Migration
      */
     public function up()
     {
-        Schema::create('murids', function (Blueprint $table) {
+        Schema::create('gurus', function (Blueprint $table) {
             $table->id();
-            $table->string('nis');
+            $table->string('nip');
             $table->string('nama');
-            $table->string('kelas');
-            $table->string('jurusan');
-            // $table->foreign('id_murid')
-            //       ->references('id')
-            //       ->on('murids')
-            //       ->onDelete('cascade');
+            $table->string('mapel');
+            $table->unsignedBigInteger('id_murid');
+            $table->foreign('id_murid')->references('id')->on('murids')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -34,6 +31,8 @@ class CreateMuridsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('murids');
+        Schema::dropIfExists('gurus');
     }
 }
+
+?>
